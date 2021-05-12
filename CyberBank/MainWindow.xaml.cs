@@ -150,6 +150,7 @@ namespace CyberBank
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+            string aboba = "kek";
         }
 
         private void login_button_Click(object sender, RoutedEventArgs e)

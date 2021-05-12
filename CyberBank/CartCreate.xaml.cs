@@ -68,6 +68,10 @@ namespace CyberBank
                 usc = new MainMenu();
                 CreateGrid.Children.Add(usc);        
             }
+            else
+            {
+                
+            }
             db.CloseConnection();
 
 
