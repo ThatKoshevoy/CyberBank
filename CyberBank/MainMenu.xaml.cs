@@ -80,24 +80,25 @@ namespace CyberBank
         }
         private async void get_news(int times)
         {
-            int x = 1;
+            int check = 1;
             while (true)
             {
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                proc.StartInfo.FileName = @"C:\Users\glebo\Desktop\CyberBank\CyberBank\bin\Debug\py_script\start_script_invise.vbs";
-                proc.StartInfo.WorkingDirectory = @"C:\Users\glebo\Desktop\CyberBank\CyberBank\bin\Debug\py_script";
+                Process proc = new Process();
+                string folder = Environment.CurrentDirectory;
+                proc.StartInfo.FileName = $@"{folder}\py_script\start_script_invise.vbs";
+                proc.StartInfo.WorkingDirectory = $@"{folder}\py_script";
                 proc.Start();
                 this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
                 {
-                    news.Text = File.ReadAllText($"py_script/news{x}.txt", Encoding.Default).ToString();
+                    news.Text = File.ReadAllText($"py_script/news{check}.txt", Encoding.Default).ToString();
 
                     return null;
                 }), null);
-                await Task.Delay(15000);
-                x++;
-                if (x == 5)
+                await Task.Delay(10000);
+                check++;
+                if (check == 5)
                 {
-                    x = 1;
+                    check = 1;
                 }
             }
 
