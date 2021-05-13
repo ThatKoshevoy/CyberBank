@@ -10,7 +10,7 @@ namespace CyberBank
 {
     class DataBase
     {
-        MySqlConnection connection = new MySqlConnection("server=localhost;port=3307;user=root;password=root;database=cyberbank");
+        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;user=root;password=root;database=cyberbank");
 
         public void OpenConnection()
         {
