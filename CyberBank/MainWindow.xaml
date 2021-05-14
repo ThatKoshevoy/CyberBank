@@ -135,6 +135,19 @@
           </TransformGroup>
         </Label.RenderTransform>
       </Label>
+      <Frame  HorizontalAlignment="Left" Height="31" Margin="134,189,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5">
+        <Frame.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform Angle="-90.328"/>
+            <TranslateTransform/>
+          </TransformGroup>
+        </Frame.RenderTransform>
+        <Frame.Background>
+          <ImageBrush ImageSource="carglogo.png"/>
+        </Frame.Background>
+      </Frame>
 
     </Grid>
     <Border Padding="30" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="162" Margin="1080,162,0,0" VerticalAlignment="Top" Width="170" Background="#FF3F3F3F">
