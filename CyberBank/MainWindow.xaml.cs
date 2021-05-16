@@ -86,8 +86,8 @@ namespace CyberBank
                             return null;
                         }), null);                        
                     }
-                        db.CloseConnection();
-                        await Task.Delay(1000);
+                    db.CloseConnection();
+                    await Task.Delay(1000);
                     
                 }
                 catch (MySql.Data.MySqlClient.MySqlException)
@@ -195,6 +195,7 @@ namespace CyberBank
 
                             Globals.cardnumber = q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id);
                             Globals.cardnumber = change_cardnumber(Globals.cardnumber);
+                            Globals.id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
                             Globals.cvv = q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id);
                             Globals.cache = float.Parse(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id));
                             Globals.role = q.select_by_username_pass("u_role", "users", Globals.login, Globals.pass);
