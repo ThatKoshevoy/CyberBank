@@ -53,6 +53,7 @@ namespace CyberBank
         {
             while (true)
             {
+                RijndaelAlgorithm rijn = new RijndaelAlgorithm();
                 DataBase db = new DataBase();
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 db.OpenConnection();
@@ -66,6 +67,7 @@ namespace CyberBank
                     if (command.ExecuteScalar() != null)
                     {
                         Globals.surname = command.ExecuteScalar().ToString();
+                        Globals.surname = RijndaelAlgorithm.Decrypt(Globals.surname, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                         Globals.cardholder = $"{Globals.name} {Globals.surname}";
                         Globals.cardholder = Globals.cardholder.ToUpper();
                         cardnumber_on_card.Content = Globals.cardnumber;
@@ -117,6 +119,18 @@ namespace CyberBank
             MainMenuGrid.Children.Clear();
             usc = new Transaction();
             MainMenuGrid.Children.Add(usc);
+        }
+
+        private void enc_b_Click(object sender, RoutedEventArgs e)
+        {
+            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
+            enc.Content = RijndaelAlgorithm.Encrypt(enc_t.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
+        }
+
+        private void dec_b_Click(object sender, RoutedEventArgs e)
+        {
+            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
+            dec.Content = RijndaelAlgorithm.Decrypt(enc.Content.ToString(), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
         }
 
         private void reverse_Click(object sender, RoutedEventArgs e)

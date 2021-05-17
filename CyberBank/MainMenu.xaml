@@ -54,6 +54,11 @@
         </Button>
         <Label Content="Show CVV" HorizontalAlignment="Left" Margin="645,438,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Whitney" Foreground="#FF878787"/>
         <Label x:Name="cvv_on_card" Visibility="Hidden" Content="888" HorizontalAlignment="Left" Margin="1064,437,0,0" VerticalAlignment="Top" FontStyle="Italic" Width="109" FontSize="18" Background="{x:Null}" Foreground="#DD4B4B4B"/>
+        <Button x:Name="enc_b" Content="Button" HorizontalAlignment="Left" Margin="846,216,0,0" VerticalAlignment="Top" Width="75" Click="enc_b_Click"/>
+        <Label x:Name="enc" Content="Label" HorizontalAlignment="Left" Margin="676,104,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="enc_t" HorizontalAlignment="Left" Height="23" Margin="812,288,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Background="White"/>
+        <Button x:Name="dec_b" Content="Button" HorizontalAlignment="Left" Margin="513,141,0,0" VerticalAlignment="Top" Width="75" Click="dec_b_Click"/>
+        <Label x:Name="dec" Content="Label" HorizontalAlignment="Left" Margin="332,165,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

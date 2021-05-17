@@ -57,6 +57,7 @@ namespace CyberBank
             {
                 try
                 {
+                    RijndaelAlgorithm rijn = new RijndaelAlgorithm();
                     Querys q = new Querys();
                     DataBase db = new DataBase();
                     DataTable table = new DataTable();
@@ -71,8 +72,8 @@ namespace CyberBank
                     {
                         int id = Convert.ToInt32(command.ExecuteScalar());
                         Globals.cache = float.Parse(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", id));
-                        Globals.cvv = q.select_by_id_if("ec_cvv", "e_carts", "ec_cartholder_id", id);
-                        Globals.cardnumber = q.select_by_id_if("ec_cartnumber", "e_carts", "ec_cartholder_id", id);
+                        Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
+                        Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
                         Globals.cardnumber = change_cardnumber(Globals.cardnumber);
                         Globals.role = q.select_by_username_pass_if("u_role","users",Globals.login, Globals.pass);
                         this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
@@ -90,7 +91,7 @@ namespace CyberBank
                     await Task.Delay(1000);
                     
                 }
-                catch (MySql.Data.MySqlClient.MySqlException)
+                catch
                 {
 
                 }
@@ -155,6 +156,7 @@ namespace CyberBank
 
         private void login_button_Click(object sender, RoutedEventArgs e)
         {
+            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
             Querys q = new Querys();
             Ping ping = new Ping();
             DataBase db = new DataBase();
@@ -169,12 +171,12 @@ namespace CyberBank
             {
                 try {
                     error.Content = "";
-                    Globals.login = Userbox.Text;
+                    Globals.login = RijndaelAlgorithm.Encrypt(Userbox.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                     if (x % 2 == 0)
                     {
-                        Globals.pass = pass_reveal.Text;
+                        Globals.pass = RijndaelAlgorithm.Encrypt(pass_reveal.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                     }
-                    else Globals.pass = Passbox.Password;
+                    else Globals.pass = RijndaelAlgorithm.Encrypt(Passbox.Password, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                     Userbox.Text = "";
                     Passbox.Password = "";
                     db.OpenConnection();
@@ -185,7 +187,7 @@ namespace CyberBank
                     adapter.Fill(table);
                     if (table.Rows.Count > 0)
                     {
-                        Globals.name = command.ExecuteScalar().ToString();
+                        Globals.name = RijndaelAlgorithm.Decrypt(command.ExecuteScalar().ToString(), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                         db.CloseConnection();
                         topicname.Content = Globals.name;
                         String havecart = q.select_by_username_pass("u_havecart", "users", Globals.login, Globals.pass);
@@ -193,10 +195,10 @@ namespace CyberBank
                         {
                             int id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
 
-                            Globals.cardnumber = q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id);
+                            Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                             Globals.cardnumber = change_cardnumber(Globals.cardnumber);
                             Globals.id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
-                            Globals.cvv = q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id);
+                            Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                             Globals.cache = float.Parse(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id));
                             Globals.role = q.select_by_username_pass("u_role", "users", Globals.login, Globals.pass);
 

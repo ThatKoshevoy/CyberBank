@@ -168,6 +168,7 @@
     <Compile Include="registration.xaml.cs">
       <DependentUpon>registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RijndaelAlgorithm.cs" />
     <Compile Include="Transaction.xaml.cs">
       <DependentUpon>Transaction.xaml</DependentUpon>
     </Compile>

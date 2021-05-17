@@ -30,10 +30,11 @@ namespace CyberBank
 
         private void trans_button_Click(object sender, RoutedEventArgs e)
         {
+            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
             success.Content = "";
             error.Content = "";
             bool fatal_error = true;
-            string to_who = kuda_trans.Text;
+            string to_who = RijndaelAlgorithm.Encrypt(kuda_trans.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
             if (how_much.Text != "")
             {
                 float value = float.Parse(how_much.Text.Replace(".", ","));
@@ -56,7 +57,7 @@ namespace CyberBank
                         command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
                         command.ExecuteNonQuery();
                         command = new MySqlCommand("UPDATE e_carts SET ec_cache=ec_cache-@value where ec_cartnumber = @cardnumber", db.GetConnection());
-                        command.Parameters.Add("@cardnumber", MySqlDbType.VarChar).Value = Globals.cardnumber;
+                        command.Parameters.Add("@cardnumber", MySqlDbType.VarChar).Value = RijndaelAlgorithm.Encrypt(Globals.cardnumber.Replace(" ", ""), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                         command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
                         command.ExecuteNonQuery();
                         success.Content = "Перевод выполнен!";

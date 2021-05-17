@@ -12,6 +12,7 @@ namespace CyberBank
     {
         private DataBase db = new DataBase();
         private MySqlDataAdapter adapter = new MySqlDataAdapter();
+        private RijndaelAlgorithm rijn = new RijndaelAlgorithm();
         public string select_by_id(string what, string from, string where, int id)
         {
             db.OpenConnection();
@@ -53,8 +54,8 @@ namespace CyberBank
             string exit_data = "";
             db.OpenConnection();
             MySqlCommand command = new MySqlCommand($"SELECT {what} FROM {from} where u_username = @login and u_password = @pass", db.GetConnection());
-            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = username;
-            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = pass;
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value =username;
+            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value =pass;
             adapter.SelectCommand = command;
             if (command.ExecuteScalar() != null)
             {
