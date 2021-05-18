@@ -7,207 +7,207 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="CyberBank.MainWindow"
         mc:Ignorable="d" Height="720" Width="1280" ResizeMode="NoResize" WindowStyle="None">
-  <Window.Background>
-    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-      <GradientStop Color="#FFA8A8A8" Offset="0.124"/>
-      <GradientStop Color="White" Offset="1"/>
-    </LinearGradientBrush>
-  </Window.Background>
-
-  <Grid RenderTransformOrigin="0.562,0.494" Margin="0,0,4,4">
-
-
-
-
-    <Button x:Name="registration_button" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="580,0,0,200" Width="342" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" FontFamily="Arial" FontSize="16" FontWeight="Bold" Height="44" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FFFF8000" FontStyle="Italic" Click="registration_button_Click">
-      <Button.Resources>
-        <Style TargetType="{x:Type Border}">
-          <Setter Property="CornerRadius" Value="10"/>
-        </Style>
-      </Button.Resources>
-      <Button.RenderTransform>
-        <TransformGroup>
-          <ScaleTransform/>
-          <SkewTransform/>
-          <RotateTransform Angle="-0.129"/>
-          <TranslateTransform/>
-        </TransformGroup>
-      </Button.RenderTransform>
-    </Button>
-    <Button x:Name="login_button" Content="Войти"  HorizontalAlignment="Left" Margin="580,410,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" Click="login_button_Click" BorderBrush="{x:Null}"/>
-    <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,304,0,0" VerticalAlignment="Top" Width="400" Background="White">
-      <TextBox x:Name="Userbox"  materialDesign:HintAssist.Hint="Username" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
-    </Border>
-    <Border x:Name="passbox_bord" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
-      <PasswordBox x:Name="Passbox"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
-    </Border>
-    <Border x:Name="pass_reveal_bord" Visibility="Hidden" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
-      <TextBox x:Name="pass_reveal"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
-    </Border>
-    <Button  HorizontalAlignment="Left" Margin="954,351,0,0" VerticalAlignment="Top" Width="57" Height="27" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
-      <materialDesign:PackIcon Kind="Eye" Height="17" Width="24" Foreground="#FF878787"/>
-    </Button>
-    <Grid x:Name="GridMain" HorizontalAlignment="Left" Height="715" Margin="0,0,0,0" VerticalAlignment="Top" Width="1277">
-      <Label x:Name="error" Content="" HorizontalAlignment="Left" Margin="619,243,0,0" VerticalAlignment="Top" FontSize="10"/>
-    </Grid>
-    <Grid HorizontalAlignment="Left" Height="245" Margin="-256,240,0,0" VerticalAlignment="Top" Width="736" RenderTransformOrigin="0.5,0.5">
-      <Grid.RenderTransform>
-        <TransformGroup>
-          <ScaleTransform/>
-          <SkewTransform/>
-          <RotateTransform Angle="89.674"/>
-          <TranslateTransform/>
-        </TransformGroup>
-      </Grid.RenderTransform>
-      <Grid.Background>
+    <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-          <GradientStop Color="Black" Offset="0"/>
-          <GradientStop Color="#FF3F3F3F" Offset="0.035"/>
+            <GradientStop Color="#FFA8A8A8" Offset="0.124"/>
+            <GradientStop Color="White" Offset="1"/>
         </LinearGradientBrush>
-      </Grid.Background>
-      <Label x:Name="topicname" Content="" HorizontalAlignment="Left" Margin="6,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="50" Width="243" FontSize="20" FontWeight="Bold" Foreground="#DDD6D6D6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-        <Label.RenderTransform>
-          <TransformGroup>
-            <ScaleTransform/>
-            <SkewTransform/>
-            <RotateTransform Angle="-89.914"/>
-            <TranslateTransform/>
-          </TransformGroup>
-        </Label.RenderTransform>
-      </Label>
-      <Border BorderThickness="1" HorizontalAlignment="Left" Height="246" Margin="172,0,0,-1" VerticalAlignment="Top" Width="76">
-        <Border.Background>
-          <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Black" Offset="0"/>
-            <GradientStop Color="#FF232323" Offset="0.035"/>
-          </LinearGradientBrush>
-        </Border.Background>
-        <StackPanel Margin="0,0,1,10">
-          <Label x:Name="carts" Content="" RenderTransformOrigin="0.5,0.5" Margin="-187,0,-156,0" Height="55" Foreground="#DDDADADA" Background="{x:Null}" FontWeight="Bold">
-            <Label.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-90.007"/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </Label.RenderTransform>
-          </Label>
-          <Label  x:Name="cart_value" Content="" RenderTransformOrigin="0.5,0.5" Height="34" Margin="-20,0,-50,0" Foreground="#DDDADADA" FontSize="14" FontWeight="Bold" >
-            <Label.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-89.814"/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </Label.RenderTransform>
-          </Label>
-          <Label  x:Name="cart_cvv" Content="" RenderTransformOrigin="0.5,0.5" Height="42" Margin="-71,0,-106,0" Foreground="#DDDADADA" FontWeight="Bold" FontSize="14" >
-            <Label.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-90.141"/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </Label.RenderTransform>
-          </Label>
-          <Label x:Name="cart_number" Content="" Height="62" Margin="0,0,-79,0" RenderTransformOrigin="0.5,0.5" Foreground="#DDDADADA" FontWeight="Bold" HorizontalAlignment="Right" Width="145" >
-            <Label.RenderTransform>
-              <TransformGroup>
-                <ScaleTransform/>
-                <SkewTransform/>
-                <RotateTransform Angle="-89.997"/>
-                <TranslateTransform/>
-              </TransformGroup>
-            </Label.RenderTransform>
-          </Label>
+    </Window.Background>
+
+    <Grid RenderTransformOrigin="0.562,0.494" Margin="0,0,4,4">
+
+
+
+
+        <Button x:Name="registration_button" Content="Зарегистрироваться" HorizontalAlignment="Left" Margin="580,0,0,200" Width="342" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" FontFamily="Arial" FontSize="16" FontWeight="Bold" Height="44" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FFFF8000" FontStyle="Italic" Click="registration_button_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.129"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="login_button" Content="Войти"  HorizontalAlignment="Left" Margin="580,410,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" Click="login_button_Click" BorderBrush="{x:Null}"/>
+        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,304,0,0" VerticalAlignment="Top" Width="400" Background="White">
+            <TextBox x:Name="Userbox"  materialDesign:HintAssist.Hint="Username" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        </Border>
+        <Border x:Name="passbox_bord" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
+            <PasswordBox x:Name="Passbox"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        </Border>
+        <Border x:Name="pass_reveal_bord" Visibility="Hidden" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
+            <TextBox x:Name="pass_reveal"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        </Border>
+        <Button  HorizontalAlignment="Left" Margin="954,351,0,0" VerticalAlignment="Top" Width="57" Height="27" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click">
+            <materialDesign:PackIcon Kind="Eye" Height="17" Width="24" Foreground="#FF878787"/>
+        </Button>
+        <Grid x:Name="GridMain" HorizontalAlignment="Left" Height="715" Margin="0,0,0,0" VerticalAlignment="Top" Width="1277">
+            <Label x:Name="error" Content="" HorizontalAlignment="Left" Margin="619,243,0,0" VerticalAlignment="Top" FontSize="10"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="245" Margin="-256,240,0,0" VerticalAlignment="Top" Width="736" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.674"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF3F3F3F" Offset="0.035"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Label x:Name="topicname" Content="" HorizontalAlignment="Left" Margin="6,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="50" Width="243" FontSize="20" FontWeight="Bold" Foreground="#DDD6D6D6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.914"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="246" Margin="172,0,0,-1" VerticalAlignment="Top" Width="76">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF232323" Offset="0.035"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Margin="0,0,1,10">
+                    <Label x:Name="carts" Content="" RenderTransformOrigin="0.5,0.5" Margin="-187,0,-156,0" Height="55" Foreground="#DDDADADA" Background="{x:Null}" FontWeight="Bold">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.007"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <TextBlock  x:Name="cart_value" Text="544646354" TextWrapping="Wrap"  RenderTransformOrigin="0.5,0.5" Height="35" Margin="-20,0,-22,0" Foreground="#DDDADADA" FontSize="14" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.814"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Label  x:Name="cart_cvv" Content="" RenderTransformOrigin="0.5,0.5" Height="42" Margin="-71,0,-106,0" Foreground="#DDDADADA" FontWeight="Bold" FontSize="14" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.141"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label x:Name="cart_number" Content="" Height="62" Margin="0,0,-79,0" RenderTransformOrigin="0.5,0.5" Foreground="#DDDADADA" FontWeight="Bold" HorizontalAlignment="Right" Width="145" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.997"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </StackPanel>
+            </Border>
+            <Label x:Name="is_admin" Content="" HorizontalAlignment="Left" Margin="31,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Foreground="#DD979797" FontSize="18" Width="243" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.812"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Frame  HorizontalAlignment="Left" Height="31" Margin="134,189,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5">
+                <Frame.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90.328"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Frame.RenderTransform>
+                <Frame.Background>
+                    <ImageBrush ImageSource="carglogo.png"/>
+                </Frame.Background>
+            </Frame>
+
+        </Grid>
+        <Border Padding="30" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="162" Margin="1080,46,0,0" VerticalAlignment="Top" Width="170" Background="#FF3F3F3F">
+            <StackPanel>
+                <Label Content="Курс Валют" Height="38" FontFamily="Arial" FontSize="16" Foreground="#FFFF8000" FontWeight="Bold"/>
+
+                <Label x:Name="USD" Content="no connection" Height="38" FontFamily="Arial" FontSize="14" Background="{x:Null}" Foreground="#FFFF8000"/>
+                <Label x:Name="EUR" Content="no connection" Height="58" FontFamily="Arial" FontSize="14" Foreground="#FFFF8000"/>
+
+            </StackPanel>
+
+        </Border>
+        <Frame Content="" HorizontalAlignment="Left" Height="86" Margin="244,1,0,0" VerticalAlignment="Top" Width="327" MouseDown="Frame_MouseDown">
+            <Frame.Background>
+                <ImageBrush ImageSource="orange.png"/>
+            </Frame.Background>
+        </Frame>
+        <Grid HorizontalAlignment="Left" Height="96" Margin="-12,-16,-2,0" VerticalAlignment="Top" Width="1290" MouseDown="Grid_MouseDown">
+            <Grid.Background>
+                <ImageBrush/>
+            </Grid.Background>
+            <StackPanel HorizontalAlignment="Left" Height="61" Margin="2,13,0,0" VerticalAlignment="Top" Width="63">
+                <Button x:Name="go_home" Background="{x:Null}" BorderBrush="{x:Null}" Height="64" Click="go_home_Click" HorizontalAlignment="Right" Width="63">
+                    <materialDesign:PackIcon Kind="Home" Height="40" Width="26" Foreground="#FF878787"/>
+                </Button>
+
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Height="51" Margin="79,10,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.5,0.5">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Button x:Name="logout"  Height="67" RenderTransformOrigin="0.5,0.5" Margin="-11,0,37,0" BorderBrush="{x:Null}" Background="{x:Null}" Click="logout_Click">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <materialDesign:PackIcon Kind="Logout" Height="40" Width="26" Foreground="#FF878787"/>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+        <StackPanel HorizontalAlignment="Left" Height="40" Margin="1170,0,0,0" VerticalAlignment="Top" Width="105">
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="exit" Height="37" Margin="59,0,0,0" AutomationProperties.IsOffscreenBehavior="FromClip">
+                <materialDesign:PackIcon Kind="Power" Foreground="#FF3f3f3f"/>
+            </Button>
         </StackPanel>
-      </Border>
-      <Label x:Name="is_admin" Content="" HorizontalAlignment="Left" Margin="31,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Foreground="#DD979797" FontSize="18" Width="243" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
-        <Label.RenderTransform>
-          <TransformGroup>
-            <ScaleTransform/>
-            <SkewTransform/>
-            <RotateTransform Angle="-89.812"/>
-            <TranslateTransform/>
-          </TransformGroup>
-        </Label.RenderTransform>
-      </Label>
-      <Frame  HorizontalAlignment="Left" Height="31" Margin="134,189,0,0" VerticalAlignment="Top" Width="44" RenderTransformOrigin="0.5,0.5">
-        <Frame.RenderTransform>
-          <TransformGroup>
-            <ScaleTransform/>
-            <SkewTransform/>
-            <RotateTransform Angle="-90.328"/>
-            <TranslateTransform/>
-          </TransformGroup>
-        </Frame.RenderTransform>
-        <Frame.Background>
-          <ImageBrush ImageSource="carglogo.png"/>
-        </Frame.Background>
-      </Frame>
-
-    </Grid>
-    <Border Padding="30" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="162" Margin="1080,162,0,0" VerticalAlignment="Top" Width="170" Background="#FF3F3F3F">
-      <StackPanel>
-        <Label Content="Курс Валют" Height="38" FontFamily="Arial" FontSize="16" Foreground="#FFFF8000" FontWeight="Bold"/>
-
-        <Label x:Name="USD" Content="no connection" Height="38" FontFamily="Arial" FontSize="14" Background="{x:Null}" Foreground="#FFFF8000"/>
-        <Label x:Name="EUR" Content="no connection" Height="58" FontFamily="Arial" FontSize="14" Foreground="#FFFF8000"/>
-
-      </StackPanel>
-
-    </Border>
-    <Frame Content="" HorizontalAlignment="Left" Height="86" Margin="244,1,0,0" VerticalAlignment="Top" Width="327" MouseDown="Frame_MouseDown">
-      <Frame.Background>
-        <ImageBrush ImageSource="orange.png"/>
-      </Frame.Background>
-    </Frame>
-    <Grid HorizontalAlignment="Left" Height="96" Margin="-12,-16,-2,0" VerticalAlignment="Top" Width="1290" MouseDown="Grid_MouseDown">
-      <Grid.Background>
-        <ImageBrush/>
-      </Grid.Background>
-      <StackPanel HorizontalAlignment="Left" Height="61" Margin="2,13,0,0" VerticalAlignment="Top" Width="63">
-        <Button x:Name="go_home" Background="{x:Null}" BorderBrush="{x:Null}" Height="61" Click="go_home_Click" HorizontalAlignment="Right" Width="63">
-          <materialDesign:PackIcon Kind="Home" Height="40" Width="26" Foreground="#FF878787"/>
-        </Button>
 
 
-      </StackPanel>
-      <StackPanel HorizontalAlignment="Left" Height="53" Margin="79,10,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.5,0.5">
-        <StackPanel.RenderTransform>
-          <TransformGroup>
-            <ScaleTransform ScaleY="-1"/>
-            <SkewTransform/>
-            <RotateTransform/>
-            <TranslateTransform/>
-          </TransformGroup>
-        </StackPanel.RenderTransform>
-        <Button x:Name="logout"  Height="67" RenderTransformOrigin="0.5,0.5" Margin="-11,0,22,0" BorderBrush="{x:Null}" Background="{x:Null}" Click="logout_Click">
-          <Button.RenderTransform>
-            <TransformGroup>
-              <ScaleTransform ScaleY="-1"/>
-              <SkewTransform/>
-              <RotateTransform/>
-              <TranslateTransform/>
-            </TransformGroup>
-          </Button.RenderTransform>
-          <materialDesign:PackIcon Kind="Logout" Height="40" Width="26" Foreground="#FF878787"/>
-        </Button>
-      </StackPanel>
 
 
     </Grid>
-    <StackPanel HorizontalAlignment="Left" Height="40" Margin="1170,0,0,0" VerticalAlignment="Top" Width="105">
-      <Button Background="{x:Null}" BorderBrush="{x:Null}" Click="exit" Height="37" Margin="59,0,0,0" AutomationProperties.IsOffscreenBehavior="FromClip">
-        <materialDesign:PackIcon Kind="Power" Foreground="#FF3f3f3f"/>
-      </Button>
-    </StackPanel>
-
-
-
-
-  </Grid>
 </Window>

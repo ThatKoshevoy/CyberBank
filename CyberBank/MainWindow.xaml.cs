@@ -70,17 +70,17 @@ namespace CyberBank
                     adapter.Fill(table);
                     if (table.Rows.Count > 0)
                     {
-                        int id = Convert.ToInt32(command.ExecuteScalar());
-                        Globals.cache = float.Parse(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", id));
-                        Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
-                        Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
+                        Globals.id = Convert.ToInt32(command.ExecuteScalar());
+                        Globals.cache = Convert.ToDouble(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", Globals.id));
+                        Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); 
+                        Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
                         Globals.cardnumber = change_cardnumber(Globals.cardnumber);
                         Globals.role = q.select_by_username_pass_if("u_role","users",Globals.login, Globals.pass);
                         this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
                         {
                             topicname.Content = Globals.name;
                             carts.Content = "Ваша карта";
-                            cart_value.Content = $"Баланс: {Globals.cache}₽";
+                            cart_value.Text = $"Баланс: {Globals.cache}₽";
                             cart_cvv.Content = $"CVV {Globals.cvv}";
                             cart_number.Content = Globals.cardnumber;
                             is_admin.Content = Globals.role;
@@ -193,18 +193,17 @@ namespace CyberBank
                         String havecart = q.select_by_username_pass("u_havecart", "users", Globals.login, Globals.pass);
                         if (havecart == "1")
                         {
-                            int id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
-
-                            Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
+                            Globals.id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
+                            Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                             Globals.cardnumber = change_cardnumber(Globals.cardnumber);
                             Globals.id = Convert.ToInt32(q.select_by_username_pass("u_id", "users", Globals.login, Globals.pass));
-                            Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
-                            Globals.cache = float.Parse(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id));
+                            Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
+                            Globals.cache = Convert.ToDouble(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", Globals.id));
                             Globals.role = q.select_by_username_pass("u_role", "users", Globals.login, Globals.pass);
 
                             cart_number.Content = Globals.cardnumber;
                             cart_cvv.Content = $"CVV {Globals.cvv}";
-                            cart_value.Content = $"Баланс: {Globals.cache}₽";
+                            cart_value.Text = $"Баланс: {Globals.cache}₽";
                             carts.Content = "Ваша карта";
                             is_admin.Content = Globals.role;
 
@@ -287,7 +286,7 @@ namespace CyberBank
             {
                 GridMain.Children.Clear();
                 cart_number.Content = "";
-                cart_value.Content = "";
+                cart_value.Text = "";
                 carts.Content = "";
                 cart_cvv.Content = "";
                 topicname.Content = "";

@@ -160,7 +160,11 @@
     <Compile Include="congrats.xaml.cs">
       <DependentUpon>congrats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CreditCreate.xaml.cs">
+      <DependentUpon>CreditCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="Mail.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
@@ -181,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="congrats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreditCreate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

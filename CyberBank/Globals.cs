@@ -12,7 +12,7 @@ namespace CyberBank
         public static string pass = "";
         public static string cardnumber = "";
         public static string cvv = "";
-        public static float cache = 0;
+        public static double cache = 0;
         public static string role = "";
         public static string name = "";
         public static string surname = "";

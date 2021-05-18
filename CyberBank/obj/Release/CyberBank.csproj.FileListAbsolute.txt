@@ -172,3 +172,5 @@ C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.csproj
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.csproj.CopyComplete
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.exe
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.pdb
+C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CreditCreate.g.cs
+C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CreditCreate.baml

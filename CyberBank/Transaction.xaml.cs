@@ -37,7 +37,7 @@ namespace CyberBank
             string to_who = RijndaelAlgorithm.Encrypt(kuda_trans.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
             if (how_much.Text != "")
             {
-                float value = float.Parse(how_much.Text.Replace(".", ","));
+                double value = Convert.ToDouble(how_much.Text.Replace(".", ","));
                 if (Globals.cache - value >= 0)
                 {
 
@@ -54,11 +54,11 @@ namespace CyberBank
                     {
                         command = new MySqlCommand("UPDATE e_carts SET ec_cache=ec_cache+@value where ec_cartnumber = @cardnumber", db.GetConnection());
                         command.Parameters.Add("@cardnumber", MySqlDbType.VarChar).Value = to_who;
-                        command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
+                        command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
                         command.ExecuteNonQuery();
                         command = new MySqlCommand("UPDATE e_carts SET ec_cache=ec_cache-@value where ec_cartnumber = @cardnumber", db.GetConnection());
                         command.Parameters.Add("@cardnumber", MySqlDbType.VarChar).Value = RijndaelAlgorithm.Encrypt(Globals.cardnumber.Replace(" ", ""), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
-                        command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
+                        command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
                         command.ExecuteNonQuery();
                         success.Content = "Перевод выполнен!";
                         error.Foreground = Brushes.Green;
@@ -75,11 +75,11 @@ namespace CyberBank
                         int id = Convert.ToInt32(command.ExecuteScalar());
                         command = new MySqlCommand("UPDATE e_carts SET ec_cache=ec_cache+@value where ec_cartholder_id = @cardnumber", db.GetConnection());
                         command.Parameters.Add("@cardnumber", MySqlDbType.Int32).Value = id;
-                        command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
+                        command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
                         command.ExecuteNonQuery();
                         command = new MySqlCommand("UPDATE e_carts SET ec_cache=ec_cache-@value where ec_cartholder_id = @cardnumber", db.GetConnection());
                         command.Parameters.Add("@cardnumber", MySqlDbType.Int32).Value = Globals.id;
-                        command.Parameters.Add("@value", MySqlDbType.Float).Value = value;
+                        command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
                         command.ExecuteNonQuery();
                         success.Content = "Перевод выполнен!";
                         success.Foreground = Brushes.Green;

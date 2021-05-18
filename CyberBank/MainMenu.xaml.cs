@@ -82,25 +82,34 @@ namespace CyberBank
         }
         private async void get_news(int times)
         {
+            string folder = Environment.CurrentDirectory;
+            Process proc = new Process();
             int check = 1;
             while (true)
             {
-                Process proc = new Process();
-                string folder = Environment.CurrentDirectory;
-                proc.StartInfo.FileName = $@"{folder}\py_script\start_script_invise.vbs";
-                proc.StartInfo.WorkingDirectory = $@"{folder}\py_script";
-                proc.Start();
-                this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
+                try
                 {
-                    news.Text = File.ReadAllText($"py_script/news{check}.txt", Encoding.Default).ToString();
+                    await Task.Delay(1000);
+                    proc.StartInfo.FileName = $@"{folder}\py_script\start_script_invise.vbs";
+                    proc.StartInfo.WorkingDirectory = $@"{folder}\py_script";
+                    proc.Start();
+                    await Task.Delay(1000);
+                    this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
+                    {
+                        news.Text = File.ReadAllText($"py_script/news{check}.txt", Encoding.Default).ToString();
 
-                    return null;
-                }), null);
-                await Task.Delay(10000);
-                check++;
-                if (check == 5)
+                        return null;
+                    }), null);
+                    await Task.Delay(10000);
+                    check++;
+                    if (check == 5)
+                    {
+                        check = 1;
+                    }
+                }
+                catch
                 {
-                    check = 1;
+
                 }
             }
 
@@ -121,16 +130,13 @@ namespace CyberBank
             MainMenuGrid.Children.Add(usc);
         }
 
-        private void enc_b_Click(object sender, RoutedEventArgs e)
+        private void credit_button_Click(object sender, RoutedEventArgs e)
         {
-            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
-            enc.Content = RijndaelAlgorithm.Encrypt(enc_t.Text, rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
-        }
+            UserControl usc = null;
+            MainMenuGrid.Children.Clear();
+            usc = new CreditCreate();
+            MainMenuGrid.Children.Add(usc);
 
-        private void dec_b_Click(object sender, RoutedEventArgs e)
-        {
-            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
-            dec.Content = RijndaelAlgorithm.Decrypt(enc.Content.ToString(), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
         }
 
         private void reverse_Click(object sender, RoutedEventArgs e)

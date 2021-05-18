@@ -16,6 +16,8 @@ namespace CyberBank
         public int passwordIterations = 2;                //Может быть любым числом
         public string initVector = "!1A3g2D4s9K556g7"; // Должно быть 16 байт
         public int keySize = 256;                // Может быть 192 или 128
+
+
         public static string Encrypt
         (
              string plainText,
@@ -27,14 +29,9 @@ namespace CyberBank
              int keySize
         )
         {
-
             byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
             byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);
-
-
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-
-
             PasswordDeriveBytes password = new PasswordDeriveBytes
             (
                 passPhrase,
@@ -42,35 +39,25 @@ namespace CyberBank
                 hashAlgorithm,
                 passwordIterations
             );
-
             byte[] keyBytes = password.GetBytes(keySize / 8);
-
             RijndaelManaged symmetricKey = new RijndaelManaged();
             symmetricKey.Mode = CipherMode.CBC;
-
             ICryptoTransform encryptor = symmetricKey.CreateEncryptor
             (
                 keyBytes,
                 initVectorBytes
             );
-
             MemoryStream memoryStream = new MemoryStream();
-
             CryptoStream cryptoStream = new CryptoStream
             (
                 memoryStream,
                 encryptor,
                 CryptoStreamMode.Write
             );
-
             cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-
-
             cryptoStream.FlushFinalBlock();
-
             byte[] cipherTextBytes = memoryStream.ToArray();
 
-            //Закройте оба потока.
             memoryStream.Close();
             cryptoStream.Close();
 
@@ -79,6 +66,7 @@ namespace CyberBank
 
             return cipherText;
         }
+
         public static string Decrypt
         (
             string cipherText,
@@ -93,11 +81,7 @@ namespace CyberBank
 
             byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
             byte[] saltValueBytes = Encoding.ASCII.GetBytes(saltValue);
-
-
             byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
-
-
             PasswordDeriveBytes password = new PasswordDeriveBytes
             (
                 passPhrase,
@@ -105,27 +89,15 @@ namespace CyberBank
                 hashAlgorithm,
                 passwordIterations
             );
-
-
             byte[] keyBytes = password.GetBytes(keySize / 8);
-
-
             RijndaelManaged symmetricKey = new RijndaelManaged();
-
-
             symmetricKey.Mode = CipherMode.CBC;
-
-
             ICryptoTransform decryptor = symmetricKey.CreateDecryptor
             (
                 keyBytes,
                 initVectorBytes
             );
-
-
             MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
-
-
             CryptoStream cryptoStream = new CryptoStream
             (
                 memoryStream,
@@ -133,19 +105,14 @@ namespace CyberBank
                 CryptoStreamMode.Read
             );
             byte[] plainTextBytes = new byte[cipherTextBytes.Length];
-
-
             int decryptedByteCount = cryptoStream.Read
             (
                 plainTextBytes,
                 0,
                 plainTextBytes.Length
             );
-
             memoryStream.Close();
             cryptoStream.Close();
-
-
             string plainText = Encoding.UTF8.GetString
             (
                 plainTextBytes,
