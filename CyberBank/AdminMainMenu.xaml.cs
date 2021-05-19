@@ -55,6 +55,7 @@ namespace CyberBank
             public string email { get; set; }
             public double value { get; set; }
             public double value_need { get; set; }
+            public string credit { get; set; }
 
         }
 
@@ -90,9 +91,10 @@ namespace CyberBank
                 string name = $"{ RijndaelAlgorithm.Decrypt(q.select_by_id("u_name", "users", "u_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)} {RijndaelAlgorithm.Decrypt(q.select_by_id("u_surname", "users", "u_id", id),rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)}";
                 string date_of_birth = q.select_by_id("DATE_FORMAT(u_date_of_birth, '%d /%m /%Y')", "users", "u_id", id);
                 string havecart = q.select_by_id("u_havecart", "users", "u_id", id);
+                string havecredit = q.select_by_id("u_havecredit", "users", "u_id", id);
                 string role = q.select_by_id("u_role", "users", "u_id", id);
                 double cache = Math.Round(Convert.ToDouble(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id)), 2);
-                DataGrid.Items.Add(new item { ID = id.ToString(), Username = username, Name = name, dob = date_of_birth, card = havecart, value = cache, Role = role }); 
+                DataGrid.Items.Add(new item { ID = id.ToString(), Username = username, Name = name, dob = date_of_birth,  card = havecart, credit = havecredit, value = cache, Role = role }); 
                 id++;
             }
             id = 1;

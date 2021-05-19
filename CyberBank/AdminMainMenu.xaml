@@ -36,6 +36,7 @@
                     <DataGridTextColumn Binding="{Binding Path=Name}" ClipboardContentBinding="{x:Null}" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Path= dob}" ClipboardContentBinding="{x:Null}" Header="Date of Birth"/>
                     <DataGridTextColumn Binding="{Binding Path= card}" ClipboardContentBinding="{x:Null}" Header="Have card?"/>
+                    <DataGridTextColumn Binding="{Binding Path= credit}" ClipboardContentBinding="{x:Null}" Header="Have credit?"/>
                     <DataGridTextColumn Binding="{Binding Path= value}" ClipboardContentBinding="{x:Null}" Header="Value"/>
                     <DataGridTextColumn Binding="{Binding Path= Role}" ClipboardContentBinding="{x:Null}" Header="Role"/>
 

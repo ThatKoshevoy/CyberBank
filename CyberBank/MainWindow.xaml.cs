@@ -72,10 +72,38 @@ namespace CyberBank
                     {
                         Globals.id = Convert.ToInt32(command.ExecuteScalar());
                         Globals.cache = Convert.ToDouble(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", Globals.id));
-                        Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); 
+                        Globals.cvv = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cvv", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
                         Globals.cardnumber = RijndaelAlgorithm.Decrypt(q.select_by_id("ec_cartnumber", "e_carts", "ec_cartholder_id", Globals.id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize); ;
                         Globals.cardnumber = change_cardnumber(Globals.cardnumber);
-                        Globals.role = q.select_by_username_pass_if("u_role","users",Globals.login, Globals.pass);
+                        Globals.role = q.select_by_username_pass_if("u_role", "users", Globals.login, Globals.pass);
+                        string have_credit = q.select_by_id_if("u_havecredit", "users", "u_id", Globals.id);
+                        if (have_credit == "1")
+                        {                        
+                            string credit_cvv = q.select_by_id_if("cr_c_id_cvv", "credit_cards", "cr_c_id_user", Globals.id);
+                            string credit_cardnumber = q.select_by_id_if("cr_c_cardnuber", "credit_cards", "cr_c_id_user", Globals.id);
+                            double credit_value = Convert.ToDouble(q.select_by_id_if("cr_ca_cache", "credit_cards", "cr_c_id_user", Globals.id));
+                            double credit_need_value = Convert.ToDouble(q.select_by_id_if("cr_c_need_cache", "credit_cards", "cr_c_id_user", Globals.id));
+                            credit_cardnumber = change_cardnumber(credit_cardnumber);
+                            this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
+                            {
+                                credit_carts.Content = "Ваша кредитная карта";
+                                credit_cart_cvv.Content = $"CVV {credit_cvv}";
+                                credit_cart_number.Content = credit_cardnumber;
+                                credit_cart_value.Text = $"Баланс: {credit_value} ₽";
+                                return null;
+                            }), null);
+                        }
+                        else
+                        {
+                            this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
+                            {
+                                credit_carts.Content = "";
+                                credit_cart_cvv.Content = $"";
+                                credit_cart_number.Content = "";
+                                credit_cart_value.Text = $"";
+                                return null;
+                            }), null);
+                        }
                         this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
                         {
                             topicname.Content = Globals.name;
@@ -291,8 +319,13 @@ namespace CyberBank
                 cart_cvv.Content = "";
                 topicname.Content = "";
                 is_admin.Content = "";
+                credit_carts.Content = "";
+                credit_cart_cvv.Content = "";
+                credit_cart_number.Content = "";
+                credit_cart_value.Text = $"";
                 Globals.login = "";
                 Globals.role = "";
+                Globals.id = 0;
             }
         }
     }

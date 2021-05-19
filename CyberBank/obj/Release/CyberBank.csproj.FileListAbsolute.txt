@@ -174,3 +174,5 @@ C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.exe
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CyberBank.pdb
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CreditCreate.g.cs
 C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\CreditCreate.baml
+C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\Credit.g.cs
+C:\Users\glebo\Documents\GitHub\CyberBank\CyberBank\obj\Release\Credit.baml

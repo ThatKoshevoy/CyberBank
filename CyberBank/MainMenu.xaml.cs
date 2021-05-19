@@ -132,10 +132,22 @@ namespace CyberBank
 
         private void credit_button_Click(object sender, RoutedEventArgs e)
         {
-            UserControl usc = null;
-            MainMenuGrid.Children.Clear();
-            usc = new CreditCreate();
-            MainMenuGrid.Children.Add(usc);
+            Querys q = new Querys();
+            string havecredit = q.select_by_id("u_havecredit", "users", "u_id", Globals.id);
+            if (havecredit == "0")
+            {
+                UserControl usc = null;
+                MainMenuGrid.Children.Clear();
+                usc = new CreditCreate();
+                MainMenuGrid.Children.Add(usc);
+            }
+            else
+            {
+                UserControl usc = null;
+                MainMenuGrid.Children.Clear();
+                usc = new Credit();
+                MainMenuGrid.Children.Add(usc);
+            }
 
         }
 

@@ -148,6 +148,56 @@
                     <ImageBrush ImageSource="carglogo.png"/>
                 </Frame.Background>
             </Frame>
+            <Border BorderThickness="1" HorizontalAlignment="Left" Height="246" Margin="264,0,0,-1" VerticalAlignment="Top" Width="76">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#FF232323" Offset="0.035"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Margin="0,0,1,10">
+                    <Label x:Name="credit_carts" Content="" RenderTransformOrigin="0.5,0.5" Margin="-187,0,-156,0" Height="55" Foreground="#DDDADADA" Background="{x:Null}" FontWeight="Bold">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.007"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <TextBlock  x:Name="credit_cart_value" Text="" TextWrapping="Wrap"  RenderTransformOrigin="0.5,0.5" Height="35" Margin="-20,0,-22,0" Foreground="#DDDADADA" FontSize="14" FontWeight="Bold" >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.814"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <Label  x:Name="credit_cart_cvv" Content="" RenderTransformOrigin="0.5,0.5" Height="42" Margin="-71,0,-106,0" Foreground="#DDDADADA" FontWeight="Bold" FontSize="14" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.141"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <Label x:Name="credit_cart_number" Content="" Height="62" Margin="0,0,-79,0" RenderTransformOrigin="0.5,0.5" Foreground="#DDDADADA" FontWeight="Bold" HorizontalAlignment="Right" Width="145" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-89.997"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </StackPanel>
+            </Border>
 
         </Grid>
         <Border Padding="30" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="162" Margin="1080,46,0,0" VerticalAlignment="Top" Width="170" Background="#FF3F3F3F">
