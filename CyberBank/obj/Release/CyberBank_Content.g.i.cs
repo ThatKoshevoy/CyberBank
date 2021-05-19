@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("carglogo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("orange3.ico")]
 
 
