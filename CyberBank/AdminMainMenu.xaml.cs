@@ -179,6 +179,9 @@ namespace CyberBank
                     command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
                     command.ExecuteNonQuery();
                     mail.send_mail(email);
+                    command = new MySqlCommand("UPDATE `users` SET `u_havecredit` = 1 where `u_id` = @id", db.GetConnection());
+                    command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    command.ExecuteNonQuery();
                 }
                 else
                 {
