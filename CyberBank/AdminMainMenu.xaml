@@ -69,7 +69,11 @@
         <Button x:Name="credit_datagrid" Content="Заявки на кредит" Margin="502,82,596,0" VerticalAlignment="Top" Background="#FFFF8000" Height="47" BorderBrush="{x:Null}" Click="credit_datagrid_Click"/>
         <Button x:Name="credit_button" Visibility="Hidden" Margin="929,134,206,0" Content="Выдать кредит" VerticalAlignment="Top" Background="#FFFF8000" Height="47" BorderBrush="{x:Null}" Click="credit_button_Click"/>
         <Label x:Name="success" Content="Label" HorizontalAlignment="Left" Margin="330,192,0,0" VerticalAlignment="Top"/>
-        <Border BorderThickness="1" HorizontalAlignment="Left" Height="332" Margin="292,264,0,0" VerticalAlignment="Top" Width="890"/>
+        <Border BorderThickness="1" HorizontalAlignment="Left" Height="358" Margin="258,263,0,0" VerticalAlignment="Top" Width="969">
+            <Border.Background>
+                <SolidColorBrush Color="#FC000000" Opacity="0"/>
+            </Border.Background>
+        </Border>
 
     </Grid>
 </UserControl>

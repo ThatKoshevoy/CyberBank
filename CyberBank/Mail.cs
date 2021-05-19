@@ -20,7 +20,7 @@ namespace CyberBank
             message.Body = "<div style=\"color:red;\">Вам одобрен кредит</div>";
             using (SmtpClient client = new SmtpClient("smtp.gmail.com"))
             {
-                client.Credentials = new NetworkCredential("glebok.0804@gmail.com", "glebok0804");
+                client.Credentials = new NetworkCredential("glebok.0804@gmail.com", mail_cred.pass);
                 client.Port = 587;
                 client.EnableSsl = true;
                 client.Send(message);

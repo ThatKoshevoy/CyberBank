@@ -165,6 +165,7 @@
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Mail.cs" />
+    <Compile Include="mail_cred.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>

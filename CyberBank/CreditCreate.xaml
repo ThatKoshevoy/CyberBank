@@ -29,7 +29,7 @@
         </Border>
         <Label Content="Введите e-mail." Margin="360,434,745,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" FontFamily="Whitney"/>
         <Button x:Name="create_credit_button" Content="Оформить"  HorizontalAlignment="Left" Margin="580,519,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" BorderBrush="{x:Null}" Click="create_credit_button_Click" />
-        <Label x:Name="success" Content="Label" HorizontalAlignment="Left" Margin="594,122,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="success" Content="" HorizontalAlignment="Left" Margin="445,122,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
 
     </Grid>
 </UserControl>
