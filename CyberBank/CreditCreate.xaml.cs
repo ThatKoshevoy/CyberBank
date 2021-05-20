@@ -28,29 +28,38 @@ namespace CyberBank
 
         private void create_credit_button_Click(object sender, RoutedEventArgs e)
         {
-            DataBase db = new DataBase();
-            RijndaelAlgorithm rijn = new RijndaelAlgorithm();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            string description = description_creditcreate.Text;
-            double value = Convert.ToDouble(value_creditcreate.Text.Replace(".",","));
-            string email = email_creditcreate.Text;
-            MySqlCommand command = new MySqlCommand("INSERT INTO `credit_requests` ( `cr_description`, `cr_value`, `cr_email`, `cr_id_user`) VALUES ( @desc, @value, @email, @id)", db.GetConnection());
-            command.Parameters.Add("@desc", MySqlDbType.VarChar).Value = description;
-            command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
-            command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
-            command.Parameters.Add("@id", MySqlDbType.Int32).Value = Globals.id;
-            db.OpenConnection();
-            if (command.ExecuteNonQuery() == 1)
+            try
             {
-                success.Content = "Заявка принята, вас оповестят по почте о решении";
-                success.Foreground = Brushes.Green;
+                DataBase db = new DataBase();
+                RijndaelAlgorithm rijn = new RijndaelAlgorithm();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                string description = description_creditcreate.Text;
+                double value = Convert.ToDouble(value_creditcreate.Text.Replace(".", ","));
+                string email = email_creditcreate.Text;
+                MySqlCommand command = new MySqlCommand("INSERT INTO `credit_requests` ( `cr_description`, `cr_value`, `cr_email`, `cr_id_user`) VALUES ( @desc, @value, @email, @id)", db.GetConnection());
+                command.Parameters.Add("@desc", MySqlDbType.VarChar).Value = description;
+                command.Parameters.Add("@value", MySqlDbType.Double).Value = value;
+                command.Parameters.Add("@email", MySqlDbType.VarChar).Value = email;
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = Globals.id;
+                db.OpenConnection();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    success.Content = "Заявка принята, вас оповестят по почте о решении";
+                    success.Foreground = Brushes.Green;
+                }
+                else
+                {
+                    success.Content = "Произошла ошибка";
+                    success.Foreground = Brushes.Red;
+                }
+                db.CloseConnection();
             }
-            else
+            catch
             {
-                success.Content = "Произошла ошибка";
+                success.Content = "Произошла ошибка, проверьте введеные данные";
                 success.Foreground = Brushes.Red;
+
             }
-            db.CloseConnection();
         }
     }
 }

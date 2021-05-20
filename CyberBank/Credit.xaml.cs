@@ -27,7 +27,7 @@ namespace CyberBank
         {
             InitializeComponent();
             Querys q = new Querys();
-            value_need = Math.Round(Convert.ToDouble(q.select_by_id_if("	cr_c_need_cache", "credit_cards", "cr_c_id_user", Globals.id)), 2);
+            value_need = Math.Round(Convert.ToDouble(q.select_by_id_if("cr_c_need_cache", "credit_cards", "cr_c_id_user", Globals.id)), 2);
             cache = Math.Round(Convert.ToDouble(q.select_by_id("cr_ca_cache", "credit_cards", "cr_c_id_user", Globals.id)), 2);
             credit_need.Content = $"Вам необходимо для погашения: {value_need} ₽";
             credit_value.Content = $"У вас есть: {cache}₽";
