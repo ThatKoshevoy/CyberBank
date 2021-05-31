@@ -63,7 +63,7 @@ namespace CyberBank
         {
             DataBase db = new DataBase();
             DataTable table = new DataTable();
-            string request = search.Text.ToString();
+
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             int id = 1;
             MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM `users`", db.GetConnection());
@@ -72,12 +72,7 @@ namespace CyberBank
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             db.CloseConnection();
             DataGrid.Items.Clear();
-            if (request == "" || request == "SEARCH")
-            {
-                FindAll(count, id);
-                
-                return;
-            }
+            FindAll(count, id);
         }
 
         private void FindAll(int count, int id)
@@ -87,13 +82,21 @@ namespace CyberBank
 
                 RijndaelAlgorithm rijn = new RijndaelAlgorithm();
                 Querys q = new Querys();
-                string username = RijndaelAlgorithm.Decrypt(q.select_by_id("u_username", "users", "u_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
-                string name = $"{ RijndaelAlgorithm.Decrypt(q.select_by_id("u_name", "users", "u_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)} {RijndaelAlgorithm.Decrypt(q.select_by_id("u_surname", "users", "u_id", id),rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)}";
-                string date_of_birth = q.select_by_id("DATE_FORMAT(u_date_of_birth, '%d /%m /%Y')", "users", "u_id", id);
-                string havecart = q.select_by_id("u_havecart", "users", "u_id", id);
-                string havecredit = q.select_by_id("u_havecredit", "users", "u_id", id);
-                string role = q.select_by_id("u_role", "users", "u_id", id);
-                double cache = Math.Round(Convert.ToDouble(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id)), 2);
+                double cache = 0;
+                string username = RijndaelAlgorithm.Decrypt(q.select_by_id_if("u_username", "users", "u_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize);
+                string name = $"{ RijndaelAlgorithm.Decrypt(q.select_by_id_if("u_name", "users", "u_id", id), rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)} {RijndaelAlgorithm.Decrypt(q.select_by_id("u_surname", "users", "u_id", id),rijn.passPhrase, rijn.saltValue, rijn.hashAlgorithm, rijn.passwordIterations, rijn.initVector, rijn.keySize)}";
+                string date_of_birth = q.select_by_id_if("DATE_FORMAT(u_date_of_birth, '%d /%m /%Y')", "users", "u_id", id);
+                string havecart = q.select_by_id_if("u_havecart", "users", "u_id", id);
+                string havecredit = q.select_by_id_if("u_havecredit", "users", "u_id", id);
+                string role = q.select_by_id_if("u_role", "users", "u_id", id);
+                if (havecart == "0")
+                {
+                    cache = 0;
+                }
+                else
+                {
+                    cache = Math.Round(Convert.ToDouble(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", id)), 2);
+                }
                 DataGrid.Items.Add(new item { ID = id.ToString(), Username = username, Name = name, dob = date_of_birth,  card = havecart, credit = havecredit, value = cache, Role = role }); 
                 id++;
             }
@@ -113,7 +116,7 @@ namespace CyberBank
                 if(value_need_str != "")
                 {
                     double value_need = Math.Round(Convert.ToDouble(value_need_str), 2);
-                    double cache = Math.Round(Convert.ToDouble(q.select_by_id("ec_cache", "e_carts", "ec_cartholder_id", id)), 2);
+                    double cache = Math.Round(Convert.ToDouble(q.select_by_id_if("ec_cache", "e_carts", "ec_cartholder_id", id)), 2);
                     CreditDataGrid.Items.Add(new item { Desc = desc, Username = username, value_need = value_need, value = cache, Name = name, email = email });
                 }
                 id++;
@@ -124,20 +127,20 @@ namespace CyberBank
         {
             Credit_border.Visibility = Visibility.Hidden;
             Users_border.Visibility = Visibility.Visible;
-            search.Visibility = Visibility.Visible;
+
             credit.Visibility = Visibility.Hidden;
             credit_button.Visibility = Visibility.Hidden;
-            search_button.Visibility = Visibility.Visible;
+
         }
 
         private void credit_datagrid_Click(object sender, RoutedEventArgs e)
         {         
             Users_border.Visibility = Visibility.Hidden;
             Credit_border.Visibility = Visibility.Visible;
-            search.Visibility = Visibility.Hidden;
+
             credit.Visibility = Visibility.Visible;
             credit_button.Visibility = Visibility.Visible;
-            search_button.Visibility = Visibility.Hidden;
+
         }
 
         private void credit_button_Click(object sender, RoutedEventArgs e)
@@ -167,7 +170,7 @@ namespace CyberBank
                 {
                     cardnumber += rnd.Next(1000, 9999).ToString();
                 }
-                command = new MySqlCommand("INSERT INTO `credit_cards` ( `cr_ca_cache`, `cr_c_need_cache`, `cr_c_cardnuber`, `cr_c_id_cvv`, `cr_c_id_user`) VALUES ( @cache, @value_need, @cardnumber, @cvv, @id)", db.GetConnection());
+                command = new MySqlCommand("INSERT INTO `credit_cards` ( `cr_ca_cache`, `cr_c_need_cache`, `cr_c_cardnumber`, `cr_c_id_cvv`, `cr_c_id_user`) VALUES ( @cache, @value_need, @cardnumber, @cvv, @id)", db.GetConnection());
                 command.Parameters.Add("@cardnumber", MySqlDbType.VarChar).Value = cardnumber;
                 command.Parameters.Add("@cache", MySqlDbType.Float).Value = value;
                 command.Parameters.Add("@value_need", MySqlDbType.VarChar).Value = value;

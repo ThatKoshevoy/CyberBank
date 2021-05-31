@@ -18,10 +18,10 @@
         <Label Content="и получите бонус до 1000 рублей на свой счет" HorizontalAlignment="Left" Margin="481,311,0,0" VerticalAlignment="Top"  FontSize="24" FontWeight="Bold" FontFamily="Arial"/>
         <Button x:Name="create_button" Content="Оформить"  HorizontalAlignment="Left" Margin="580,472,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" Click="create_button_Click" BorderBrush="{x:Null}" />
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,372,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Userbox_cardcreate"  materialDesign:HintAssist.Hint="Username" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Userbox_cardcreate"  materialDesign:HintAssist.Hint="Логин" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,417,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Passbox_cardcreate"  materialDesign:HintAssist.Hint="Password" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Passbox_cardcreate"  materialDesign:HintAssist.Hint="Пароль" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
     </Grid>
 </UserControl>

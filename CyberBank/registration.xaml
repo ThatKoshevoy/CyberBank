@@ -16,20 +16,20 @@
         </Grid.Background>
 
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,304,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Userbox_reg"  materialDesign:HintAssist.Hint="Username" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Userbox_reg"  materialDesign:HintAssist.Hint="Логин" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Passbox_reg"  materialDesign:HintAssist.Hint="Password" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Passbox_reg"  materialDesign:HintAssist.Hint="Пароль" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Button x:Name="registr_button" Content="Регистрация"  HorizontalAlignment="Left" Margin="580,535,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" Click="registr_button_Click" BorderBrush="{x:Null}"/>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,394,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Name_reg"  materialDesign:HintAssist.Hint="Name" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Name_reg"  materialDesign:HintAssist.Hint="Имя" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,437,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Surname_reg"  materialDesign:HintAssist.Hint="Surname" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Surname_reg"  materialDesign:HintAssist.Hint="Фамилия" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,481,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <DatePicker x:Name="dob_reg"   materialDesign:HintAssist.Hint="Date of Birth" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,-1" Width="382" Foreground="#FF9E9999" FontSize="14" Height="29" Background="#00000000" SelectedDateFormat="Short"/>
+            <DatePicker x:Name="dob_reg"   materialDesign:HintAssist.Hint="Дата рождения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,0,0,-1" Width="382" Foreground="#FF9E9999" FontSize="14" Height="29" Background="#00000000" SelectedDateFormat="Short"/>
         </Border>
         <Label x:Name="error" Content="" HorizontalAlignment="Left" Margin="670,626,0,0" VerticalAlignment="Top"/>
 

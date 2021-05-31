@@ -80,7 +80,7 @@ namespace CyberBank
                         if (have_credit == "1")
                         {                        
                             string credit_cvv = q.select_by_id_if("cr_c_id_cvv", "credit_cards", "cr_c_id_user", Globals.id);
-                            string credit_cardnumber = q.select_by_id_if("cr_c_cardnuber", "credit_cards", "cr_c_id_user", Globals.id);
+                            string credit_cardnumber = q.select_by_id_if("cr_c_cardnumber", "credit_cards", "cr_c_id_user", Globals.id);
                             double credit_value = Convert.ToDouble(q.select_by_id_if("cr_ca_cache", "credit_cards", "cr_c_id_user", Globals.id));
                             double credit_need_value = Convert.ToDouble(q.select_by_id_if("cr_c_need_cache", "credit_cards", "cr_c_id_user", Globals.id));
                             credit_cardnumber = change_cardnumber(credit_cardnumber);
@@ -149,8 +149,8 @@ namespace CyberBank
                     usd_double = Math.Round(usd_double, 2);
                     this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Background, new System.Windows.Threading.DispatcherOperationCallback(delegate
                     {
-                        EUR.Content = $"Евро: {eur_double}";
-                        USD.Content = $"Доллар: {usd_double}";
+                        EUR.Content = $"Евро: {eur_double}₽";
+                        USD.Content = $"Доллар: {usd_double}₽";
                         return null;
                     }), null);
                 }
@@ -179,7 +179,7 @@ namespace CyberBank
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
-            string aboba = "kek";
+
         }
 
         private void login_button_Click(object sender, RoutedEventArgs e)

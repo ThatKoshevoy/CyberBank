@@ -16,10 +16,10 @@
         </Grid.Background>
 
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,295,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="kuda_trans"  materialDesign:HintAssist.Hint="Username or cartnumber" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="kuda_trans"  materialDesign:HintAssist.Hint="Логин или номер карты" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,340,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="how_much"  materialDesign:HintAssist.Hint="Value" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="how_much"  materialDesign:HintAssist.Hint="Сумма" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Button x:Name="trans_button" Content="Перевести"  HorizontalAlignment="Left" Margin="578,399,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" BorderBrush="{x:Null}" Click="trans_button_Click"/>
         <Label x:Name="error" Content="" HorizontalAlignment="Left" Margin="626,226,0,0" VerticalAlignment="Top" Foreground="#DDFF0000" FontSize="24" FontWeight="Bold"/>

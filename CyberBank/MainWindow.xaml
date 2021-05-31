@@ -36,10 +36,10 @@
         </Button>
         <Button x:Name="login_button" Content="Войти"  HorizontalAlignment="Left" Margin="580,410,0,0" VerticalAlignment="Top" Width="344" Height="46" FontFamily="Arial" FontWeight="Bold" FontStyle="Italic" FontSize="16" Background="#FFFF8000" Click="login_button_Click" BorderBrush="{x:Null}"/>
         <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,304,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <TextBox x:Name="Userbox"  materialDesign:HintAssist.Hint="Username" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="Userbox"  materialDesign:HintAssist.Hint="Логин" TextWrapping="Wrap" Text="" Margin="7,-1,6,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border x:Name="passbox_bord" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
-            <PasswordBox x:Name="Passbox"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <PasswordBox x:Name="Passbox"  materialDesign:HintAssist.Hint="Пароль" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
         </Border>
         <Border x:Name="pass_reveal_bord" Visibility="Hidden" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" Margin="552,349,0,0" VerticalAlignment="Top" Width="400" Background="White">
             <TextBox x:Name="pass_reveal"  materialDesign:HintAssist.Hint="Password" Margin="9,-1,5,0" FontSize="14" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" Foreground="#FF9E9999" BorderBrush="{x:Null}" Background="{x:Null}"/>
