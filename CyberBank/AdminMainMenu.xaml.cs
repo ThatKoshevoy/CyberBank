@@ -195,6 +195,11 @@ namespace CyberBank
                 }
                 db.CloseConnection();
             }
+            else
+            {
+                success.Content = "Ошибка";
+                success.Foreground = Brushes.Red;
+            }
         }
     }
 }
